@@ -1,49 +1,59 @@
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScreenSettings : MonoBehaviour
 {
-	public TMP_Dropdown resolutionDropdown;
-	public Toggle fullscreenToggle;
+    public TMP_Dropdown resolutionDropdown;
+    public Toggle fullscreenToggle;
 
-	private Resolution[] resolutions;
+    private Resolution[] resolutions;
 
-	void Start()
-	{
-		// Получаем список разрешений
-		resolutions = Screen.resolutions;
-		resolutionDropdown.ClearOptions();
+    void Start()
+    {
+        // Получаем список разрешений
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
 
-		// Заполняем Dropdown доступными разрешениями
-		int currentResolutionIndex = 0;
-		for (int i = 0; i < resolutions.Length; i++)
-		{
-			string option = resolutions[i].width + " x " + resolutions[i].height;
-			resolutionDropdown.options.Add(new TMP_Dropdown.OptionData(option));
+        int[] targetWidths = { 1280, 1366, 1600, 1920 };
+        int[] targetHeights = { 720, 768, 900, 1080 };
 
-			if (resolutions[i].width == Screen.currentResolution.width &&
-				resolutions[i].height == Screen.currentResolution.height)
-			{
-				currentResolutionIndex = i;
-			}
-		}
+        int currentResolutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            for (int j = 0; j < targetWidths.Length; j++)
+            {
+                if (resolutions[i].width == targetWidths[j] && resolutions[i].height == targetHeights[j])
+                {
 
-		resolutionDropdown.value = currentResolutionIndex;
-		resolutionDropdown.RefreshShownValue();
+                    string option = resolutions[i].width + " x " + resolutions[i].height;
+                    resolutionDropdown.options.Add(new TMP_Dropdown.OptionData(option));
 
-		fullscreenToggle.isOn = Screen.fullScreen;
-	}
 
-	public void SetResolution(int resolutionIndex)
-	{
-		Resolution resolution = resolutions[resolutionIndex];
-		Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-	}
+                    if (resolutions[i].width == Screen.currentResolution.width &&
+                        resolutions[i].height == Screen.currentResolution.height)
+                    {
+                        currentResolutionIndex = resolutionDropdown.options.Count - 1;
+                    }
+                    break;
+                }
+            }
+        }
 
-	public void SetFullscreen(bool isFullscreen)
-	{
-		Screen.fullScreen = isFullscreen;
-	}
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+
+        fullscreenToggle.isOn = Screen.fullScreen;
+    }
+
+    public void SetResolution(int resolutionIndex)
+    {
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
 }

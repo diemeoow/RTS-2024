@@ -11,10 +11,8 @@ public class ToggleImageSwitcher : MonoBehaviour
 
     void Start()
     {
-        // Установите начальное состояние изображений
         UpdateImages(toggle.isOn);
 
-        // Подпишитесь на событие изменения состояния Toggle
         toggle.onValueChanged.AddListener(OnToggleChanged);
     }
     void OnToggleChanged(bool isOn)
