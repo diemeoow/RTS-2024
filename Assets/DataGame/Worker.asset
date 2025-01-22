@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a531b53bcf273a448a3bb345271f954, type: 3}
-  m_Name: Catapult
-  m_EditorClassIdentifier: 
-  unitName: Catapult
-  speed: 2
-  health: 150
-  attackPower: 50
-  trainingCost: 100
-  detectionRadius: 8
+  m_Script: {fileID: 0}
+  m_Name: Worker
+  m_EditorClassIdentifier: Assembly-CSharp::WorkerSO
+  unitName: Worker
+  speed: 3.5
+  health: 30
+  trainingCost: 2
+  resourceGatherRate: 0.5
+  buildingSpeed: 20

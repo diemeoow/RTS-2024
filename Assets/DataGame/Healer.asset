@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a531b53bcf273a448a3bb345271f954, type: 3}
-  m_Name: Archer
-  m_EditorClassIdentifier: 
-  unitName: Archer
-  speed: 3.5
-  health: 50
-  attackPower: 15
-  trainingCost: 30
-  detectionRadius: 5
+  m_Script: {fileID: 0}
+  m_Name: Healer
+  m_EditorClassIdentifier: Assembly-CSharp::HealerSO
+  unitName: Healer
+  speed: 3
+  health: 40
+  trainingCost: 60
+  healingPower: 20
+  minHealingRange: 1
+  maxHealingRange: 5
+  healingDelay: 2

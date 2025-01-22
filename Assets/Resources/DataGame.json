@@ -1,0 +1,18 @@
+{
+    "units": [
+        {
+            "unitType": "",
+            "unitName": "Worker",
+            "speed": 3.5,
+            "health": 30,
+            "trainingCost": 2
+        },
+        {
+            "unitType": "",
+            "unitName": "Healer",
+            "speed": 3.0,
+            "health": 40,
+            "trainingCost": 60
+        }
+    ]
+}
