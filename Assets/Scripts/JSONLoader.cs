@@ -1,5 +1,7 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using UnityEngine;
 
 public class JSONLoader : MonoBehaviour
@@ -8,7 +10,7 @@ public class JSONLoader : MonoBehaviour
 
     public void SaveToJson(string filePath)
     {
-        if (unitList == null || unitList.units == null || unitList.units.Length == 0)
+        if (unitList == null || unitList.units.Length == 0)
         {
             Debug.LogError("UnitListSO пустой или не назначен!");
             return;
@@ -23,7 +25,7 @@ public class JSONLoader : MonoBehaviour
             {
                 serializedUnits.Add(new CombatUnitData
                 {
-                   // unitType = "CombatUnit",
+                    unitType = "CombatUnit",
                     unitName = combatUnit.unitName,
                     speed = combatUnit.speed,
                     health = combatUnit.health,
@@ -39,7 +41,7 @@ public class JSONLoader : MonoBehaviour
             {
                 serializedUnits.Add(new HealerData
                 {
-                   // unitType = "Healer",
+                    unitType = "Healer",
                     unitName = healer.unitName,
                     speed = healer.speed,
                     health = healer.health,
@@ -54,7 +56,7 @@ public class JSONLoader : MonoBehaviour
             {
                 serializedUnits.Add(new WorkerData
                 {
-                   // unitType = "Worker",
+                    unitType = "Worker",
                     unitName = worker.unitName,
                     speed = worker.speed,
                     health = worker.health,
@@ -69,8 +71,9 @@ public class JSONLoader : MonoBehaviour
             }
         }
 
-        // Преобразуем список в JSON и записываем в файл
-        string json = JsonUtility.ToJson(new UnitList  { units = serializedUnits}, true);
+        // Используем Newtonsoft.Json для сериализации
+        string json = JsonConvert.SerializeObject(new UnitList { units = serializedUnits }, Newtonsoft.Json.Formatting.Indented);
+
         try
         {
             File.WriteAllText(filePath, json);
@@ -88,8 +91,4 @@ public class JSONLoader : MonoBehaviour
     {
         SaveToJson(saveFilePath);
     }
-    //public void Save()
-    //{
-    //    SaveToJson(saveFilePath);
-    //}
 }

@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 4a82700df9b5e954f9b755f46bbffdeb, type: 3}
   m_Name: Worker
-  m_EditorClassIdentifier: Assembly-CSharp::WorkerSO
+  m_EditorClassIdentifier: 
   unitName: Worker
   speed: 3.5
   health: 30
-  trainingCost: 2
+  trainingCost: 20
   resourceGatherRate: 0.5
-  buildingSpeed: 20
+  buildingSpeed: 2

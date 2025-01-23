@@ -7,4 +7,3 @@ public class UnitData
     public int health;// Здоровье
     public int trainingCost;// Стоимость тренировки
 }
-

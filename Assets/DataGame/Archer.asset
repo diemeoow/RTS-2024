@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7debeeaaeb491240a84e4e3824d742c, type: 3}
-  m_Name: Healer
+  m_Script: {fileID: 11500000, guid: f7548d06d788cbd4abbaa1a396bc12f0, type: 3}
+  m_Name: Archer
   m_EditorClassIdentifier: 
-  unitName: Healer
-  speed: 3
-  health: 40
-  trainingCost: 60
-  healingPower: 20
-  minHealingRange: 1
-  maxHealingRange: 5
-  healingDelay: 0
+  unitName: Archer
+  speed: 3.5
+  health: 50
+  trainingCost: 30
+  attackPower: 15
+  detectionRadius: 5
+  minAttackRange: 2
+  maxAttackRange: 10
+  attackDelay: 1.5
