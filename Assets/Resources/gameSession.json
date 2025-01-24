@@ -1,0 +1,35 @@
+{
+    "difficultyModifiers": {
+        "easy": {
+            "enemySpawnInterval": 15,
+            "enemyUnits": [
+                "пупупу",
+                "dfgd"
+            ],
+            "initialArmyLimit": 5,
+            "armyIncreasePerAttack": 2
+        },
+        "medium": {
+            "enemySpawnInterval": 10,
+            "enemyUnits": [
+                "Мечник",
+                "Лучник"
+            ],
+            "initialArmyLimit": 8,
+            "armyIncreasePerAttack": 4
+        },
+        "hard": {
+            "enemySpawnInterval": 5,
+            "enemyUnits": [
+                "Мечник",
+                "Лучник",
+                "Катапульта"
+            ],
+            "initialArmyLimit": 10,
+            "armyIncreasePerAttack": 5
+        }
+    },
+    "freeZoneRadius": 3969,
+    "resourceSpawnInterval": 30,
+    "resourceAmount": 100
+}
