@@ -85,10 +85,6 @@ public class GenerationMap : MonoBehaviour
 
                 // Случайная модель из списка
                 GameObject randomModel = models[UnityEngine.Random.Range(0, models.Length)];
-                //if (randomModel == Tree)
-                //{
-                //    randomPosition.y = 2; // Устанавливаем высоту для деревьев
-                //}
 
                 // Создаем модель на сгенерированных координатах
                 Instantiate(randomModel, randomPosition, Quaternion.identity);

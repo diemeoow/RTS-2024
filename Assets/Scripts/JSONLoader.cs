@@ -3,96 +3,55 @@ using System.IO;
 
 public class JSONLoader : MonoBehaviour
 {
-    public UnitData unitData;
-    public BuildingData buildingData;
-    public GameSettings gameSettings;
-    public GameSessionConfig gameSessionConfig;
+    public UnitData unitData;               // ScriptableObject для юнитов
+    public BuildingData buildingData;       // ScriptableObject для зданий
+    public GameSettings gameSettings;       // ScriptableObject для настроек
+    public GameSessionConfig gameSessionConfig; // ScriptableObject для игровой сессии
+
+    private const string FilePath = "/Resources/gameData.json";
 
     public void Start()
     {
-        LoadOrCreateJsonFiles();
+        LoadOrCreateJsonFile();
     }
 
-    public void LoadOrCreateJsonFiles()
+    public void LoadOrCreateJsonFile()
     {
-        LoadOrCreateUnits();
-        LoadOrCreateBuildings();
-        LoadOrCreateSettings();
-        LoadOrCreateGameSession();
-    }
+        string filePath = Application.dataPath + FilePath;
 
-    public void LoadOrCreateUnits()
-    {
-        string filePath = Application.dataPath + "/Resources/units.json";
         if (File.Exists(filePath))
         {
-            string unitsJson = File.ReadAllText(filePath);
-            unitData.units = JsonHelper.FromJson<Unit>(unitsJson);
+            string json = File.ReadAllText(filePath);
+            GameDataContainer container = JsonUtility.FromJson<GameDataContainer>(json);
+
+            // Загружаем данные из контейнера
+            unitData.units = container.units;
+            buildingData.buildings = container.buildings;
+            gameSettings.settings = container.settings;
+            gameSessionConfig.gameSession = container.gameSession;
         }
         else
         {
-            string unitsJson = JsonUtility.ToJson(new JsonHelper.Wrapper<Unit> { Items = unitData.units }, true);
-            File.WriteAllText(filePath, unitsJson);
-        }
-    }
+            // Создаем контейнер с начальными данными
+            GameDataContainer container = new GameDataContainer
+            {
+                units = unitData.units,
+                buildings = buildingData.buildings,
+                settings = gameSettings.settings,
+                gameSession = gameSessionConfig.gameSession
+            };
 
-    public void LoadOrCreateBuildings()
-    {
-        string filePath = Application.dataPath + "/Resources/buildings.json";
-        if (File.Exists(filePath))
-        {
-            string buildingsJson = File.ReadAllText(filePath);
-            buildingData.buildings = JsonHelper.FromJson<Building>(buildingsJson);
-        }
-        else
-        {
-            string buildingsJson = JsonUtility.ToJson(new JsonHelper.Wrapper<Building> { Items = buildingData.buildings }, true);
-            File.WriteAllText(filePath, buildingsJson);
-        }
-    }
-
-    public void LoadOrCreateSettings()
-    {
-        string filePath = Application.dataPath + "/Resources/settings.json";
-        if (File.Exists(filePath))
-        {
-            string settingsJson = File.ReadAllText(filePath);
-            gameSettings.settings = JsonUtility.FromJson<Settings>(settingsJson);
-        }
-        else
-        {
-            string settingsJson = JsonUtility.ToJson(gameSettings.settings, true);
-            File.WriteAllText(filePath, settingsJson);
-        }
-    }
-
-    public void LoadOrCreateGameSession()
-    {
-        string filePath = Application.dataPath + "/Resources/gameSession.json";
-        if (File.Exists(filePath))
-        {
-            string gameSessionJson = File.ReadAllText(filePath);
-            gameSessionConfig.gameSession = JsonUtility.FromJson<GameSession>(gameSessionJson);
-        }
-        else
-        {
-            string gameSessionJson = JsonUtility.ToJson(gameSessionConfig.gameSession, true);
-            File.WriteAllText(filePath, gameSessionJson);
+            // Сохраняем контейнер в JSON
+            string json = JsonUtility.ToJson(container, true);
+            File.WriteAllText(filePath, json);
         }
     }
 }
-
-public static class JsonHelper
+[System.Serializable]
+public class GameDataContainer
 {
-    public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Items;
-    }
-
-    [System.Serializable]
-    public class Wrapper<T>
-    {
-        public T[] Items;
-    }
+    public Unit[] units;                 // Юниты
+    public Building[] buildings;         // Здания
+    public Settings settings;            // Настройки игры
+    public GameSession gameSession;      // Конфигурация игровой сессии
 }
