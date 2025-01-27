@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameSessionConfig", menuName = "ScriptableObjects/GameSessionConfig", order = 4)]
@@ -30,4 +31,11 @@ public class Difficulty
     public string[] enemyUnits;
     public int initialArmyLimit;
     public int armyIncreasePerAttack;
+}
+
+[System.Serializable]
+public class EnemyDataContainer
+{
+	public int enemyCount; // Количество противников
+	public List<Vector3> enemyPositions; // Позиции противников
 }

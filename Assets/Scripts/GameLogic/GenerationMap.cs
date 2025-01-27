@@ -1,105 +1,181 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 
 public class GenerationMap : MonoBehaviour
 {
-    public GameObject Tree, Rock;
-    public GameObject plane;
-    private GameObject[] models;
-    public float density = 0.005f; // Плотность объектов (например, 0.01 = 1 объект на 100 единиц площади)
-    private int objectCount; // Количество объектов, рассчитывается автоматически
-    private Vector2 reservedAreaSize = new Vector2(20, 20); // Размер зарезервированной области
-    public float perlinScale = 10f; // Масштаб шума Перлина
-    public float perlinThreshold = 0.5f; // Порог значения шума для размещения объекта
-    public float minDistance = 5f; // Минимальное расстояние между объектами
-    public NavMeshSurface navMeshSurface;
+	public GameObject treePrefab;
+	public GameObject rockPrefab;
+	public GameObject playerBasePrefab;
+	public GameObject enemyBasePrefab;
+	public GameObject unitPrefab;
+	public GameObject plane;
+	public float density = 0.005f; // Плотность объектов (0.005 = 1 объект на 200 единиц площади)
+	public float perlinScale = 10f; // Масштаб шума Перлина
+	public float perlinThreshold = 0.5f; // Порог значения шума для размещения объектов
+	public float minDistance = 5f; // Минимальное расстояние между объектами
+	public float baseRadius = 10f; // Радиус, в пределах которого нельзя размещать объекты
+	public NavMeshSurface navMeshSurface;
 
-    private List<Vector3> placedObjectPositions = new List<Vector3>(); // Список позиций размещённых объектов
+	private List<Vector3> placedObjectPositions = new List<Vector3>();
+	private int enemyBaseCount;
+	private Difficulty currentDifficulty;
 
-    void Start()
-    {
-        // Получаем компонент NavMeshSurface
-        navMeshSurface = GetComponent<NavMeshSurface>();
-        models = new GameObject[] { Tree, Rock };
+	void Start()
+	{
+		LoadSettings();
+		GenerateMap();
+	}
 
-        // Получаем размеры Plane
-        Vector3 planeSize = plane.GetComponent<Renderer>().bounds.size;
+	public void LoadSettings()
+	{
+		GameSessionConfig sessionConfig = Resources.Load<GameSessionConfig>("GameSessionConfig");
+		if (sessionConfig != null)
+		{
+			enemyBaseCount = 1; // Пример настройки НУЖНО ДЕЛАТЬ ЧЕРЕЗ НАСТРОКИ ИГРЫ!!!!!!!!!!!!!!!!!!
+			currentDifficulty = sessionConfig.gameSession.difficultyModifiers.medium; // Устанавливаем текущую сложность
+		}
+		else
+		{
+			Debug.LogError("GameSessionConfig не найден. Проверьте ресурс или путь.");
+		}
+	}
 
-        // Рассчитываем количество объектов на основе плотности
-        float planeArea = planeSize.x * planeSize.z; // Площадь плоскости
-        objectCount = Mathf.RoundToInt(planeArea * density); // Количество объектов пропорционально плотности
+	public void GenerateMap()
+	{
+		Vector3 planeSize = plane.GetComponent<Renderer>().bounds.size;
+		float planeArea = planeSize.x * planeSize.z;
+		int objectCount = Mathf.RoundToInt(planeArea * density);
 
-        // Вычисляем границы резервируемой области
-        Vector2 reservedMin = new Vector2(-reservedAreaSize.x / 2, -reservedAreaSize.y / 2);
-        Vector2 reservedMax = new Vector2(reservedAreaSize.x / 2, reservedAreaSize.y / 2);
+		// Генерация баз игрока и врагов
+		List<Vector3> basePositions = GenerateBasePositions(enemyBaseCount, planeSize);
+		foreach (Vector3 basePosition in basePositions)
+		{
+			placedObjectPositions.Add(basePosition);
+		}
 
-        // Размещаем объекты
-        int placedObjects = 0;
-        while (placedObjects < objectCount)
-        {
-            // Генерируем случайные координаты
-            float randomX = UnityEngine.Random.Range(-planeSize.x / 2, planeSize.x / 2);
-            float randomZ = UnityEngine.Random.Range(-planeSize.z / 2, planeSize.z / 2);
+		// Размещение баз
+		PlaceBases(basePositions);
 
-            // Проверяем, чтобы объект не попадал в центральную область
-            if (randomX > reservedMin.x && randomX < reservedMax.x &&
-                randomZ > reservedMin.y && randomZ < reservedMax.y)
-            {
-                continue; // Пропускаем, если в зарезервированной области
-            }
+		// Генерация ресурсов
+		int placedObjects = 0;
+		while (placedObjects < objectCount)
+		{
+			float randomX = Random.Range(-planeSize.x / 2, planeSize.x / 2);
+			float randomZ = Random.Range(-planeSize.z / 2, planeSize.z / 2);
+			Vector3 randomPosition = new Vector3(randomX, 0, randomZ);
 
-            // Генерируем значение шума Перлина для координат
-            float perlinValue = Mathf.PerlinNoise(
-                (randomX + planeSize.x / 2) / perlinScale,
-                (randomZ + planeSize.z / 2) / perlinScale);
+			if (IsPositionInReservedArea(randomPosition, basePositions, baseRadius))
+			{
+				continue;
+			}
 
-            // Проверяем порог значения шума
-            if (perlinValue >= perlinThreshold)
-            {
-                Vector3 randomPosition = new Vector3(randomX, 0, randomZ);
+			float perlinValue = Mathf.PerlinNoise((randomX + planeSize.x / 2) / perlinScale, (randomZ + planeSize.z / 2) / perlinScale);
+			if (perlinValue >= perlinThreshold && !IsTooCloseToOtherObjects(randomPosition))
+			{
+				GameObject prefab = Random.value > 0.5f ? treePrefab : rockPrefab;
+				Instantiate(prefab, randomPosition, Quaternion.identity);
+				placedObjectPositions.Add(randomPosition);
+				placedObjects++;
+			}
+		}
 
-                // Проверяем, что новое место достаточно далеко от других объектов
-                bool isTooClose = false;
-                foreach (Vector3 placedPosition in placedObjectPositions)
-                {
-                    if (Vector3.Distance(randomPosition, placedPosition) < minDistance)
-                    {
-                        isTooClose = true;
-                        break;
-                    }
-                }
+		// Строим NavMesh
+		if (navMeshSurface != null)
+		{
+			navMeshSurface.BuildNavMesh();
+		}
+	}
 
-                if (isTooClose)
-                {
-                    continue; // Пропускаем создание объекта, если он слишком близко к другому
-                }
+	private List<Vector3> GenerateBasePositions(int enemyCount, Vector3 planeSize)
+	{
+		List<Vector3> positions = new List<Vector3>();
 
-                // Проверяем границы Plane
-                if (Mathf.Abs(randomPosition.x + 10) > planeSize.x / 2 || Mathf.Abs(randomPosition.z - 10) > planeSize.z / 2)
-                {
-                    continue; // Пропускаем создание объекта, если он выходит за границы Plane
-                }
+		// Центр карты для базы игрока
+		Vector3 playerBasePosition = Vector3.zero;
+		positions.Add(playerBasePosition);
 
-                // Случайная модель из списка
-                GameObject randomModel = models[UnityEngine.Random.Range(0, models.Length)];
+		// Расчёт окружности для баз врагов
+		float radius = Mathf.Min(planeSize.x, planeSize.z) / 3;
+		float angleStep = 360f / enemyCount;
 
-                // Создаем модель на сгенерированных координатах
-                Instantiate(randomModel, randomPosition, Quaternion.identity);
+		for (int i = 0; i < enemyCount; i++)
+		{
+			float angle = i * angleStep * Mathf.Deg2Rad;
+			float x = Mathf.Cos(angle) * radius;
+			float z = Mathf.Sin(angle) * radius;
+			positions.Add(new Vector3(x, 0, z));
+		}
 
-                // Добавляем позицию в список размещённых объектов
-                placedObjectPositions.Add(randomPosition);
+		return positions;
+	}
 
-                placedObjects++;
-            }
-        }
+	private void PlaceBases(List<Vector3> basePositions)
+	{
+		for (int i = 0; i < basePositions.Count; i++)
+		{
+			GameObject basePrefab = i == 0 ? playerBasePrefab : enemyBasePrefab;
+			GameObject baseObject = Instantiate(basePrefab, basePositions[i], Quaternion.identity);
 
-        // Строим NavMesh
-        if (navMeshSurface != null)
-        {
-            navMeshSurface.BuildNavMesh();
-        }
-    }
+			// Добавляем имя над базой
+			string baseName = i == 0 ? "Player Base" : $"Enemy Base {i}";
+			CreateBaseLabel(baseObject, baseName);
+
+			// Добавляем юнитов к базе врага в зависимости от сложности
+			if (i > 0) // Игрок — первая база
+			{
+				SpawnEnemyUnits(baseObject.transform.position, currentDifficulty);
+			}
+		}
+	}
+
+	private void SpawnEnemyUnits(Vector3 basePosition, Difficulty difficulty)
+	{
+		foreach (string unitType in difficulty.enemyUnits)
+		{
+			int unitCount = difficulty.initialArmyLimit;
+			for (int i = 0; i < unitCount; i++)
+			{
+				Vector3 spawnPosition = basePosition + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f));
+				Instantiate(unitPrefab, spawnPosition, Quaternion.identity);
+			}
+		}
+	}
+
+	private void CreateBaseLabel(GameObject baseObject, string baseName)
+	{
+		GameObject label = new GameObject("BaseLabel");
+		label.transform.SetParent(baseObject.transform);
+		label.transform.localPosition = new Vector3(0, 5, 0);
+
+		TextMesh textMesh = label.AddComponent<TextMesh>();
+		textMesh.text = baseName;
+		textMesh.fontSize = 18;
+		textMesh.color = Color.white;
+		textMesh.alignment = TextAlignment.Center;
+	}
+
+	private bool IsPositionInReservedArea(Vector3 position, List<Vector3> basePositions, float radius)
+	{
+		foreach (Vector3 basePosition in basePositions)
+		{
+			if (Vector3.Distance(position, basePosition) < radius)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private bool IsTooCloseToOtherObjects(Vector3 position)
+	{
+		foreach (Vector3 placedPosition in placedObjectPositions)
+		{
+			if (Vector3.Distance(position, placedPosition) < minDistance)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

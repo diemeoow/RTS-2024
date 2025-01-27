@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 1734693315051835776}
   - component: {fileID: 4358199234350678336}
   - component: {fileID: 2481741738556305708}
+  - component: {fileID: 1327480336954222236}
   m_Layer: 6
   m_Name: Priest
   m_TagString: Untagged
@@ -254,6 +255,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!195 &1327480336954222236
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7255528331568808303}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.3038086
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5.207617
+  m_BaseOffset: 2.6038084
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7402573992459290231
 GameObject:
   m_ObjectHideFlags: 0

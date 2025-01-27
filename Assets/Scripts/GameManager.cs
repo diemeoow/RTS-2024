@@ -2,24 +2,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public UnitData unitData;
-    public BuildingData buildingData;
-    public GameSettings gameSettings;
-    public GameSessionConfig gameSessionConfig;
-    public static GameManager Instance { get; private set; }
+	public UnitData unitData;
+	public BuildingData buildingData;
+	public GameSettings gameSettings;
+	public GameSessionConfig gameSessionConfig;
+	public static GameManager Instance { get; private set; }
 
-    public GameState gameState;
-    public UnitManager unitManager;
-    public BuildingManager buildingManager;
-    public ResourceManager resourceManager;
-    public EnemyManager enemyManager;
-    public UIManager uiManager;
+	public GameState gameState;
+	public UnitManager unitManager;
+	public BuildingManager buildingManager;
+	public ResourceManager resourceManager;
+	public EnemyManager enemyManager;
+	public UIManager uiManager;
 
 
-    public void Start()
+	public void Start()
     {
-
-
         // Пример использования данных
         foreach (var unit in unitData.units)
         {
@@ -33,8 +31,18 @@ public class GameManager : MonoBehaviour
 
         Debug.Log($"Resolution: {gameSettings.settings.resolution}");
         Debug.Log($"Free Zone Radius: {gameSessionConfig.gameSession.freeZoneRadius}");
-        InitializeGame();
-    }
+		// Инициализация ресурсов через UnitData
+		ResourceCost initialResources = unitData.units[0].trainingCost;
+
+		// Инициализация врагов
+		Unit[] enemyUnitsData = new Unit[unitData.units.Length];  // Заполнение данных врагов
+		for (int i = 0; i < unitData.units.Length; i++)
+		{
+			enemyUnitsData[i] = unitData.units[i];  // Просто копируем юнитов, можно заменить на реальные данные врагов
+		}
+
+		InitializeGame(initialResources, enemyUnitsData);
+	}
     private void Awake()
     {
         if (Instance == null)
@@ -48,24 +56,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Unit[] initialUnits; // Начальные юниты
-    public Building[] initialBuildings; // Начальные здания
-    Unit[] enemyUnitsData;
-    ResourceCost initialResources;
-    public void InitializeGame()
-    {
-        // Инициализация игровых данных
-        unitManager.Initialize(initialUnits);
-        buildingManager.Initialize(initialBuildings);
-        resourceManager.Initialize(initialResources);
-        enemyManager.Initialize(enemyUnitsData);
-        uiManager.Initialize();
+	public Unit[] initialUnits; // Начальные юниты
+	public Building[] initialBuildings; // Начальные здания
 
-        // Установка начального состояния игры
-        SetGameState(GameState.Playing);
-    }
+	public void InitializeGame(ResourceCost initialResources, Unit[] enemyUnitsData)
+	{
+		// Инициализация игровых данных
+		unitManager.Initialize(initialUnits);
+		buildingManager.Initialize(initialBuildings);
+		resourceManager.Initialize(initialResources);
+		enemyManager.Initialize(enemyUnitsData);  // Теперь мы передаем инициализированный массив врагов
+		uiManager.Initialize();
 
-    public void SetGameState(GameState newState)
+		// Установка начального состояния игры
+		SetGameState(GameState.Playing);
+	}
+
+	public void SetGameState(GameState newState)
     {
         gameState = newState;
         switch (newState)
