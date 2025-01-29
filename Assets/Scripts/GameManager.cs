@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
 	public UnitManager unitManager;
 	public BuildingManager buildingManager;
 	public ResourceManager resourceManager;
-	public EnemyManager enemyManager;
 	public UIManager uiManager;
 
 
@@ -65,7 +64,6 @@ public class GameManager : MonoBehaviour
 		unitManager.Initialize(initialUnits);
 		buildingManager.Initialize(initialBuildings);
 		resourceManager.Initialize(initialResources);
-		enemyManager.Initialize(enemyUnitsData);  // “еперь мы передаем инициализированный массив врагов
 		uiManager.Initialize();
 
 		// ”становка начального состо€ни€ игры

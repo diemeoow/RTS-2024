@@ -213,9 +213,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7136307974824753408}
   - component: {fileID: 2892851921578814110}
+  - component: {fileID: -2897668719477110955}
+  - component: {fileID: 6772908646644295439}
+  - component: {fileID: 7359756171250155634}
+  - component: {fileID: 7259980739867967260}
   m_Layer: 6
   m_Name: Archer Tower
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,9 +263,91 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.55
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-2897668719477110955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056541987184030655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6a2ee4ff0009c48bcb0a1df11c7f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData:
+    name: 
+    speed: 0
+    health: 0
+    trainingCost:
+      wood: 0
+      stone: 0
+      metal: 0
+      food: 0
+    detectionRange: 0
+    minAttackRange: 0
+    maxAttackRange: 0
+    attackDelay: 0
+    damage: 0
+    resourceGatheringSpeed: 0
+    repairSpeed: 0
+    repairEfficiency: 0
+    minHealRange: 0
+    maxHealRange: 0
+    healDelay: 0
+    healAmount: 0
+    capacity: 0
+--- !u!114 &6772908646644295439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056541987184030655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9e0a6a4cf385e49b527eecfcd49da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+--- !u!65 &7359756171250155634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056541987184030655}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 17.97, y: 26.96, z: 13.48}
+  m_Center: {x: 0, y: 12.8, z: 0}
+--- !u!114 &7259980739867967260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056541987184030655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa455950da2e2f4489bf8e823089aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  unitIcon: {fileID: 0}
 --- !u!1 &5385215604123290628
 GameObject:
   m_ObjectHideFlags: 0

@@ -96,9 +96,12 @@ GameObject:
   - component: {fileID: 4240915039433158839}
   - component: {fileID: 330829142577876742}
   - component: {fileID: -2157427819169807555}
+  - component: {fileID: -3103983909519541934}
+  - component: {fileID: -4414475091759649531}
+  - component: {fileID: -5029330011072028084}
   m_Layer: 6
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,9 +194,78 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 5.207617
-  m_BaseOffset: 2.6038084
+  m_BaseOffset: -0.55
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-3103983909519541934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656083065853315016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6a2ee4ff0009c48bcb0a1df11c7f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitData:
+    name: 
+    speed: 0
+    health: 0
+    trainingCost:
+      wood: 0
+      stone: 0
+      metal: 0
+      food: 0
+    detectionRange: 0
+    minAttackRange: 0
+    maxAttackRange: 0
+    attackDelay: 0
+    damage: 0
+    resourceGatheringSpeed: 0
+    repairSpeed: 0
+    repairEfficiency: 0
+    minHealRange: 0
+    maxHealRange: 0
+    healDelay: 0
+    healAmount: 0
+    capacity: 0
+--- !u!65 &-4414475091759649531
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656083065853315016}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.93, y: 5.53, z: 2.84}
+  m_Center: {x: 0, y: 2.5, z: 0}
+--- !u!114 &-5029330011072028084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656083065853315016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa455950da2e2f4489bf8e823089aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  unitIcon: {fileID: 0}
 --- !u!1 &7122828066009743075
 GameObject:
   m_ObjectHideFlags: 0
