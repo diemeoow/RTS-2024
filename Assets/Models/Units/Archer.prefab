@@ -160,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9e0a6a4cf385e49b527eecfcd49da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
 --- !u!65 &1689459351881470509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -194,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa455950da2e2f4489bf8e823089aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Archer
+  Name: "\u041B\u0443\u0447\u043D\u0438\u043A"
   unitIcon: {fileID: 21300000, guid: 18b3e586b942b6548bb07ff2451b8535, type: 3}
 --- !u!1 &2638773636268526677
 GameObject:

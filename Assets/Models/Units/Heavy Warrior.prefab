@@ -244,7 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9e0a6a4cf385e49b527eecfcd49da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
 --- !u!65 &3482854860338157343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -278,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa455950da2e2f4489bf8e823089aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Heavy
+  Name: "\u0422\u044F\u0436\u0435\u043B\u044B\u0439 \u0432\u043E\u0438\u043D"
   unitIcon: {fileID: 21300000, guid: 8155e2639cd449540ac862478791c54e, type: 3}
 --- !u!1 &1311211916990772546
 GameObject:

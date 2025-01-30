@@ -312,7 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9e0a6a4cf385e49b527eecfcd49da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
 --- !u!65 &7359756171250155634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -346,8 +345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa455950da2e2f4489bf8e823089aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  unitIcon: {fileID: 0}
+  Name: Tower
+  unitIcon: {fileID: 21300000, guid: 46001833cc5d1254296592bbd19b939b, type: 3}
 --- !u!1 &5385215604123290628
 GameObject:
   m_ObjectHideFlags: 0
