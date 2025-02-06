@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1280:720
+  m_text: 1280x720
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c2b9536fa7232b47a03a2643d6aa159, type: 2}
   m_sharedMaterial: {fileID: -8133529649869053600, guid: 8c2b9536fa7232b47a03a2643d6aa159, type: 2}
@@ -5767,9 +5767,9 @@ RectTransform:
   - {fileID: 1888123556}
   m_Father: {fileID: 190531335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 239, y: -289.7443}
   m_SizeDelta: {x: 470, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689730972
@@ -5960,7 +5960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &725986857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7987,13 +7987,13 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: 1280:720
+    - m_Text: 1280x720
       m_Image: {fileID: 0}
-    - m_Text: 1366:768
+    - m_Text: 1366x768
       m_Image: {fileID: 0}
-    - m_Text: 1600:900
+    - m_Text: 1600x900
       m_Image: {fileID: 0}
-    - m_Text: 1920:1080
+    - m_Text: 1920x1080
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9064,9 +9064,9 @@ RectTransform:
   - {fileID: 1008720232}
   m_Father: {fileID: 190531335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 239, y: -160.96906}
   m_SizeDelta: {x: 470, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1135593463
@@ -10587,9 +10587,9 @@ RectTransform:
   - {fileID: 2077381221}
   m_Father: {fileID: 190531335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 239, y: -32.193817}
   m_SizeDelta: {x: 470, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299849808
@@ -10968,9 +10968,9 @@ RectTransform:
   - {fileID: 416927664}
   m_Father: {fileID: 190531335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 239, y: -225.35666}
   m_SizeDelta: {x: 470, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328796023
@@ -12261,9 +12261,9 @@ RectTransform:
   - {fileID: 1154521884}
   m_Father: {fileID: 190531335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 239, y: -96.58143}
   m_SizeDelta: {x: 470, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1581719192
@@ -12929,7 +12929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c8a5edc28061b409acee0a5205edea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolutionDropdown: {fileID: 973073066}
+  DropdownSize: {fileID: 973073066}
   fullscreenToggle: {fileID: 654512823}
   soundToggle: {fileID: 905488205}
   musicVolumeSlider: {fileID: 1908337138}
