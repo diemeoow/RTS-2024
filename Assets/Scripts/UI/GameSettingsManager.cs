@@ -110,13 +110,13 @@ public class GameSettingsManager : MonoBehaviour
 
     private void LoadGameSession()
     {
-        string gameSessionJson = File.ReadAllText(Application.dataPath + "/Resources/gameSession.json");
+        string gameSessionJson = File.ReadAllText(Application.dataPath + "/Resources/gameData.json");
         gameSession = JsonUtility.FromJson<GameSession>(gameSessionJson);
     }
 
     private void SaveGameSession()
     {
         string gameSessionJson = JsonUtility.ToJson(gameSession, true);
-        File.WriteAllText(Application.dataPath + "/Resources/gameSession.json", gameSessionJson);
+        File.WriteAllText(Application.dataPath + "/Resources/gameData.json", gameSessionJson);
     }
 }

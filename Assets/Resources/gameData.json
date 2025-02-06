@@ -1,425 +1,425 @@
 {
-    "units": [
-        {
-            "name": "Лучник",
-            "speed": 5.0,
-            "health": 50,
-            "trainingCost": {
-                "wood": 10,
-                "stone": 5,
-                "metal": 0,
-                "food": 0
-            },
-            "detectionRange": 10,
-            "minAttackRange": 2,
-            "maxAttackRange": 5,
-            "attackDelay": 1.5,
-            "damage": 10,
-            "resourceGatheringSpeed": 0,
-            "repairSpeed": 0,
-            "repairEfficiency": 0,
-            "minHealRange": 0,
-            "maxHealRange": 0,
-            "healDelay": 0.0,
-            "healAmount": 0,
-            "capacity": 0
-        },
-        {
-            "name": "Катапульта",
-            "speed": 2.0,
-            "health": 100,
-            "trainingCost": {
-                "wood": 20,
-                "stone": 15,
-                "metal": 10,
-                "food": 0
-            },
-            "detectionRange": 15,
-            "minAttackRange": 5,
-            "maxAttackRange": 10,
-            "attackDelay": 3.0,
-            "damage": 30,
-            "resourceGatheringSpeed": 0,
-            "repairSpeed": 0,
-            "repairEfficiency": 0,
-            "minHealRange": 0,
-            "maxHealRange": 0,
-            "healDelay": 0.0,
-            "healAmount": 0,
-            "capacity": 0
-        },
-        {
-            "name": "Тяжелый воин",
-            "speed": 3.0,
-            "health": 150,
-            "trainingCost": {
-                "wood": 15,
-                "stone": 0,
-                "metal": 20,
-                "food": 0
-            },
-            "detectionRange": 8,
-            "minAttackRange": 1,
-            "maxAttackRange": 2,
-            "attackDelay": 2.0,
-            "damage": 20,
-            "resourceGatheringSpeed": 0,
-            "repairSpeed": 0,
-            "repairEfficiency": 0,
-            "minHealRange": 0,
-            "maxHealRange": 0,
-            "healDelay": 0.0,
-            "healAmount": 0,
-            "capacity": 0
-        },
-        {
-            "name": "Копейщик",
-            "speed": 4.0,
-            "health": 80,
-            "trainingCost": {
-                "wood": 10,
-                "stone": 0,
-                "metal": 10,
-                "food": 0
-            },
-            "detectionRange": 10,
-            "minAttackRange": 1,
-            "maxAttackRange": 3,
-            "attackDelay": 1.5,
-            "damage": 15,
-            "resourceGatheringSpeed": 0,
-            "repairSpeed": 0,
-            "repairEfficiency": 0,
-            "minHealRange": 0,
-            "maxHealRange": 0,
-            "healDelay": 0.0,
-            "healAmount": 0,
-            "capacity": 0
-        },
-        {
-            "name": "Лекарь",
-            "speed": 4.0,
-            "health": 60,
-            "trainingCost": {
-                "wood": 10,
-                "stone": 0,
-                "metal": 0,
-                "food": 5
-            },
-            "detectionRange": 10,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "resourceGatheringSpeed": 0,
-            "repairSpeed": 0,
-            "repairEfficiency": 0,
-            "minHealRange": 2,
-            "maxHealRange": 5,
-            "healDelay": 2.0,
-            "healAmount": 10,
-            "capacity": 0
-        },
-        {
-            "name": "Строитель",
-            "speed": 5.0,
-            "health": 50,
-            "trainingCost": {
-                "wood": 5,
-                "stone": 0,
-                "metal": 0,
-                "food": 0
-            },
-            "detectionRange": 10,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "resourceGatheringSpeed": 2,
-            "repairSpeed": 1,
-            "repairEfficiency": 10,
-            "minHealRange": 0,
-            "maxHealRange": 0,
-            "healDelay": 0.0,
-            "healAmount": 0,
-            "capacity": 0
-        },
-        {
-            "name": "Осадная башня",
-            "speed": 1.0,
-            "health": 200,
-            "trainingCost": {
-                "wood": 30,
-                "stone": 20,
-                "metal": 10,
-                "food": 0
-            },
-            "detectionRange": 15,
-            "minAttackRange": 2,
-            "maxAttackRange": 8,
-            "attackDelay": 2.0,
-            "damage": 5,
-            "resourceGatheringSpeed": 0,
-            "repairSpeed": 0,
-            "repairEfficiency": 0,
-            "minHealRange": 0,
-            "maxHealRange": 0,
-            "healDelay": 0.0,
-            "healAmount": 0,
-            "capacity": 10
-        }
-    ],
-    "buildings": [
-        {
-            "name": "Казармы",
-            "durability": 200,
-            "constructionCost": {
-                "wood": 50,
-                "stone": 30,
-                "metal": 0,
-                "food": 0
-            },
-            "trainsUnits": [
-                "Лучник",
-                "Мечник",
-                "Тяжелый воин"
-            ],
-            "producesResource": "",
-            "detectionRadius": 0,
-            "constructionRadius": 0,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": false
-        },
-        {
-            "name": "Жилой дом",
-            "durability": 150,
-            "constructionCost": {
-                "wood": 30,
-                "stone": 20,
-                "metal": 0,
-                "food": 0
-            },
-            "trainsUnits": [
-                "Рабочий"
-            ],
-            "producesResource": "",
-            "detectionRadius": 0,
-            "constructionRadius": 0,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": false
-        },
-        {
-            "name": "Мастерская",
-            "durability": 250,
-            "constructionCost": {
-                "wood": 40,
-                "stone": 30,
-                "metal": 20,
-                "food": 0
-            },
-            "trainsUnits": [
-                "Катапульта",
-                "Осадная башня"
-            ],
-            "producesResource": "",
-            "detectionRadius": 0,
-            "constructionRadius": 0,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": false
-        },
-        {
-            "name": "Храм",
-            "durability": 200,
-            "constructionCost": {
-                "wood": 30,
-                "stone": 20,
-                "metal": 10,
-                "food": 0
-            },
-            "trainsUnits": [
-                "Лекарь"
-            ],
-            "producesResource": "",
-            "detectionRadius": 0,
-            "constructionRadius": 0,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": false
-        },
-        {
-            "name": "Гарядки",
-            "durability": 100,
-            "constructionCost": {
-                "wood": 20,
-                "stone": 0,
-                "metal": 0,
-                "food": 0
-            },
-            "trainsUnits": [],
-            "producesResource": "зарно",
-            "detectionRadius": 0,
-            "constructionRadius": 0,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": false
-        },
-        {
-            "name": "Мельница",
-            "durability": 150,
-            "constructionCost": {
-                "wood": 30,
-                "stone": 10,
-                "metal": 0,
-                "food": 0
-            },
-            "trainsUnits": [],
-            "producesResource": "еда",
-            "detectionRadius": 0,
-            "constructionRadius": 0,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": false
-        },
-        {
-            "name": "Сторожевая башня",
-            "durability": 300,
-            "constructionCost": {
-                "wood": 50,
-                "stone": 40,
-                "metal": 20,
-                "food": 0
-            },
-            "trainsUnits": [],
-            "producesResource": "",
-            "detectionRadius": 20,
-            "constructionRadius": 15,
-            "archerCapacity": 5,
-            "minAttackRange": 0,
-            "maxAttackRange": 8,
-            "attackDelay": 2.0,
-            "damage": 5,
-            "increasesResourceMax": false
-        },
-        {
-            "name": "Склад",
-            "durability": 200,
-            "constructionCost": {
-                "wood": 40,
-                "stone": 30,
-                "metal": 0,
-                "food": 0
-            },
-            "trainsUnits": [],
-            "producesResource": "",
-            "detectionRadius": 0,
-            "constructionRadius": 0,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": true
-        },
-        {
-            "name": "Ратуша",
-            "durability": 500,
-            "constructionCost": {
-                "wood": 100,
-                "stone": 50,
-                "metal": 30,
-                "food": 0
-            },
-            "trainsUnits": [],
-            "producesResource": "",
-            "detectionRadius": 0,
-            "constructionRadius": 20,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": false
-        },
-        {
-            "name": "Плавильня",
-            "durability": 200,
-            "constructionCost": {
-                "wood": 30,
-                "stone": 20,
-                "metal": 10,
-                "food": 0
-            },
-            "trainsUnits": [],
-            "producesResource": "металл",
-            "detectionRadius": 0,
-            "constructionRadius": 0,
-            "archerCapacity": 0,
-            "minAttackRange": 0,
-            "maxAttackRange": 0,
-            "attackDelay": 0.0,
-            "damage": 0,
-            "increasesResourceMax": false
-        }
-    ],
-    "settings": {
-        "resolution": "1920х180",
-        "windowMode": "fullscreen",
-        "sound": true,
-        "musicVolume": 0.5
+  "units": [
+    {
+      "name": "Лучник",
+      "speed": 5.0,
+      "health": 50,
+      "trainingCost": {
+        "wood": 10,
+        "stone": 5,
+        "metal": 0,
+        "food": 0
+      },
+      "detectionRange": 10,
+      "minAttackRange": 2,
+      "maxAttackRange": 5,
+      "attackDelay": 1.5,
+      "damage": 10,
+      "resourceGatheringSpeed": 0,
+      "repairSpeed": 0,
+      "repairEfficiency": 0,
+      "minHealRange": 0,
+      "maxHealRange": 0,
+      "healDelay": 0.0,
+      "healAmount": 0,
+      "capacity": 0
     },
-    "gameSession": {
-        "difficultyModifiers": {
-            "easy": {
-                "enemySpawnInterval": 15,
-                "enemyUnits": [
-                    "Мечник"
-                ],
-                "initialArmyLimit": 5,
-                "armyIncreasePerAttack": 2
-            },
-            "medium": {
-                "enemySpawnInterval": 10,
-                "enemyUnits": [
-                    "Мечник",
-                    "Лучник"
-                ],
-                "initialArmyLimit": 8,
-                "armyIncreasePerAttack": 4
-            },
-            "hard": {
-                "enemySpawnInterval": 5,
-                "enemyUnits": [
-                    "Мечник",
-                    "Лучник",
-                    "Катапульта"
-                ],
-                "initialArmyLimit": 10,
-                "armyIncreasePerAttack": 5
-            }
-        },
-        "freeZoneRadius": 10,
-        "resourceSpawnInterval": 30,
-        "resourceAmount": 100
+    {
+      "name": "Катапульта",
+      "speed": 2.0,
+      "health": 100,
+      "trainingCost": {
+        "wood": 20,
+        "stone": 15,
+        "metal": 10,
+        "food": 0
+      },
+      "detectionRange": 15,
+      "minAttackRange": 5,
+      "maxAttackRange": 10,
+      "attackDelay": 3.0,
+      "damage": 30,
+      "resourceGatheringSpeed": 0,
+      "repairSpeed": 0,
+      "repairEfficiency": 0,
+      "minHealRange": 0,
+      "maxHealRange": 0,
+      "healDelay": 0.0,
+      "healAmount": 0,
+      "capacity": 0
+    },
+    {
+      "name": "Тяжелый воин",
+      "speed": 3.0,
+      "health": 150,
+      "trainingCost": {
+        "wood": 15,
+        "stone": 0,
+        "metal": 20,
+        "food": 0
+      },
+      "detectionRange": 8,
+      "minAttackRange": 1,
+      "maxAttackRange": 2,
+      "attackDelay": 2.0,
+      "damage": 20,
+      "resourceGatheringSpeed": 0,
+      "repairSpeed": 0,
+      "repairEfficiency": 0,
+      "minHealRange": 0,
+      "maxHealRange": 0,
+      "healDelay": 0.0,
+      "healAmount": 0,
+      "capacity": 0
+    },
+    {
+      "name": "Копейщик",
+      "speed": 4.0,
+      "health": 80,
+      "trainingCost": {
+        "wood": 10,
+        "stone": 0,
+        "metal": 10,
+        "food": 0
+      },
+      "detectionRange": 10,
+      "minAttackRange": 1,
+      "maxAttackRange": 3,
+      "attackDelay": 1.5,
+      "damage": 15,
+      "resourceGatheringSpeed": 0,
+      "repairSpeed": 0,
+      "repairEfficiency": 0,
+      "minHealRange": 0,
+      "maxHealRange": 0,
+      "healDelay": 0.0,
+      "healAmount": 0,
+      "capacity": 0
+    },
+    {
+      "name": "Лекарь",
+      "speed": 4.0,
+      "health": 60,
+      "trainingCost": {
+        "wood": 10,
+        "stone": 0,
+        "metal": 0,
+        "food": 5
+      },
+      "detectionRange": 10,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "resourceGatheringSpeed": 0,
+      "repairSpeed": 0,
+      "repairEfficiency": 0,
+      "minHealRange": 2,
+      "maxHealRange": 5,
+      "healDelay": 2.0,
+      "healAmount": 10,
+      "capacity": 0
+    },
+    {
+      "name": "Строитель",
+      "speed": 5.0,
+      "health": 50,
+      "trainingCost": {
+        "wood": 5,
+        "stone": 0,
+        "metal": 0,
+        "food": 0
+      },
+      "detectionRange": 10,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "resourceGatheringSpeed": 2,
+      "repairSpeed": 1,
+      "repairEfficiency": 10,
+      "minHealRange": 0,
+      "maxHealRange": 0,
+      "healDelay": 0.0,
+      "healAmount": 0,
+      "capacity": 0
+    },
+    {
+      "name": "Осадная башня",
+      "speed": 1.0,
+      "health": 200,
+      "trainingCost": {
+        "wood": 30,
+        "stone": 20,
+        "metal": 10,
+        "food": 0
+      },
+      "detectionRange": 15,
+      "minAttackRange": 2,
+      "maxAttackRange": 8,
+      "attackDelay": 2.0,
+      "damage": 5,
+      "resourceGatheringSpeed": 0,
+      "repairSpeed": 0,
+      "repairEfficiency": 0,
+      "minHealRange": 0,
+      "maxHealRange": 0,
+      "healDelay": 0.0,
+      "healAmount": 0,
+      "capacity": 10
     }
+  ],
+  "buildings": [
+    {
+      "name": "Казармы",
+      "durability": 200,
+      "constructionCost": {
+        "wood": 50,
+        "stone": 30,
+        "metal": 0,
+        "food": 0
+      },
+      "trainsUnits": [
+        "Лучник",
+        "Мечник",
+        "Тяжелый воин"
+      ],
+      "producesResource": "",
+      "detectionRadius": 0,
+      "constructionRadius": 0,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": false
+    },
+    {
+      "name": "Жилой дом",
+      "durability": 150,
+      "constructionCost": {
+        "wood": 30,
+        "stone": 20,
+        "metal": 0,
+        "food": 0
+      },
+      "trainsUnits": [
+        "Рабочий"
+      ],
+      "producesResource": "",
+      "detectionRadius": 0,
+      "constructionRadius": 0,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": false
+    },
+    {
+      "name": "Мастерская",
+      "durability": 250,
+      "constructionCost": {
+        "wood": 40,
+        "stone": 30,
+        "metal": 20,
+        "food": 0
+      },
+      "trainsUnits": [
+        "Катапульта",
+        "Осадная башня"
+      ],
+      "producesResource": "",
+      "detectionRadius": 0,
+      "constructionRadius": 0,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": false
+    },
+    {
+      "name": "Храм",
+      "durability": 200,
+      "constructionCost": {
+        "wood": 30,
+        "stone": 20,
+        "metal": 10,
+        "food": 0
+      },
+      "trainsUnits": [
+        "Лекарь"
+      ],
+      "producesResource": "",
+      "detectionRadius": 0,
+      "constructionRadius": 0,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": false
+    },
+    {
+      "name": "Гарядки",
+      "durability": 100,
+      "constructionCost": {
+        "wood": 20,
+        "stone": 0,
+        "metal": 0,
+        "food": 0
+      },
+      "trainsUnits": [],
+      "producesResource": "зарно",
+      "detectionRadius": 0,
+      "constructionRadius": 0,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": false
+    },
+    {
+      "name": "Мельница",
+      "durability": 150,
+      "constructionCost": {
+        "wood": 30,
+        "stone": 10,
+        "metal": 0,
+        "food": 0
+      },
+      "trainsUnits": [],
+      "producesResource": "еда",
+      "detectionRadius": 0,
+      "constructionRadius": 0,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": false
+    },
+    {
+      "name": "Сторожевая башня",
+      "durability": 300,
+      "constructionCost": {
+        "wood": 50,
+        "stone": 40,
+        "metal": 20,
+        "food": 0
+      },
+      "trainsUnits": [],
+      "producesResource": "",
+      "detectionRadius": 20,
+      "constructionRadius": 15,
+      "archerCapacity": 5,
+      "minAttackRange": 0,
+      "maxAttackRange": 8,
+      "attackDelay": 2.0,
+      "damage": 5,
+      "increasesResourceMax": false
+    },
+    {
+      "name": "Склад",
+      "durability": 200,
+      "constructionCost": {
+        "wood": 40,
+        "stone": 30,
+        "metal": 0,
+        "food": 0
+      },
+      "trainsUnits": [],
+      "producesResource": "",
+      "detectionRadius": 0,
+      "constructionRadius": 0,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": true
+    },
+    {
+      "name": "Ратуша",
+      "durability": 500,
+      "constructionCost": {
+        "wood": 100,
+        "stone": 50,
+        "metal": 30,
+        "food": 0
+      },
+      "trainsUnits": [],
+      "producesResource": "",
+      "detectionRadius": 0,
+      "constructionRadius": 20,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": false
+    },
+    {
+      "name": "Плавильня",
+      "durability": 200,
+      "constructionCost": {
+        "wood": 30,
+        "stone": 20,
+        "metal": 10,
+        "food": 0
+      },
+      "trainsUnits": [],
+      "producesResource": "металл",
+      "detectionRadius": 0,
+      "constructionRadius": 0,
+      "archerCapacity": 0,
+      "minAttackRange": 0,
+      "maxAttackRange": 0,
+      "attackDelay": 0.0,
+      "damage": 0,
+      "increasesResourceMax": false
+    }
+  ],
+  "settings": {
+    "resolution": "1600x900",
+    "windowMode": "fullscreen",
+    "sound": true,
+    "musicVolume": 0.5
+  },
+  "gameSession": {
+    "difficultyModifiers": {
+      "easy": {
+        "enemySpawnInterval": 15,
+        "enemyUnits": [
+          "Мечник"
+        ],
+        "initialArmyLimit": 5,
+        "armyIncreasePerAttack": 2
+      },
+      "medium": {
+        "enemySpawnInterval": 10,
+        "enemyUnits": [
+          "Мечник",
+          "Лучник"
+        ],
+        "initialArmyLimit": 8,
+        "armyIncreasePerAttack": 4
+      },
+      "hard": {
+        "enemySpawnInterval": 5,
+        "enemyUnits": [
+          "Мечник",
+          "Лучник",
+          "Катапульта"
+        ],
+        "initialArmyLimit": 10,
+        "armyIncreasePerAttack": 5
+      }
+    },
+    "freeZoneRadius": 10,
+    "resourceSpawnInterval": 30,
+    "resourceAmount": 100
+  }
 }

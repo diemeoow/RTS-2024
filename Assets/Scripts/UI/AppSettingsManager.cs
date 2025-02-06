@@ -3,44 +3,30 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 public class AppSettingsManager : MonoBehaviour
 {
-    public TMP_Dropdown resolutionDropdown;
+    public TMP_Dropdown DropdownSize;
+    private string configFilePath;
     public Toggle fullscreenToggle;
     public Toggle soundToggle;
     public Slider musicVolumeSlider;
     public Button saveButton;
     public Button exitButton;
 
-    private Resolution[] resolutions;
+
     private Settings settings;
+    private void Awake()
+    {
+        // Задаём путь к файлу настроек, например, в Application.persistentDataPath
+        configFilePath = Path.Combine(Application.persistentDataPath, "D:\\Projects\\RTS 2024\\Assets\\Resources\\gameData.json");
+        //configFilePath = Path.Combine(Application.persistentDataPath, "C:\\Users\\B-ZONE\\OneDrive\\Рабочий стол\\RTS_2024\\Assets\\Scrips\\GameScene\\JsonBuilding\\BuilduingAndUnit.json");
+    }
 
     private void Start()
     {
         LoadSettings();
-
-        resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-
-        List<TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
-        int currentResolutionIndex = 0;
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(new TMP_Dropdown.OptionData(option));
-
-            if (resolutions[i].width == Screen.width &&
-                resolutions[i].height == Screen.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-
         fullscreenToggle.isOn = Screen.fullScreen;
         soundToggle.isOn = AudioListener.volume > 0;
         musicVolumeSlider.value = AudioListener.volume;
@@ -48,14 +34,75 @@ public class AppSettingsManager : MonoBehaviour
         saveButton.onClick.AddListener(OnSaveButtonClicked);
         exitButton.onClick.AddListener(OnExitButtonClicked);
     }
+    public void DropSize()
+    {
+        // Сохраняем текущий режим экрана
+        bool isFullScreen = Screen.fullScreen;
+        string newResolution = "1920x1080";
+
+        if (DropdownSize.value == 0)
+        {
+            Screen.SetResolution(1280, 720, isFullScreen);
+            newResolution = "1280x720";
+        }
+        else if (DropdownSize.value == 1)
+        {
+            Screen.SetResolution(1366, 768, isFullScreen);
+            newResolution = "1366x768";
+        }
+        else if (DropdownSize.value == 2)
+        {
+            Screen.SetResolution(1600, 900, isFullScreen);
+            newResolution = "1600x900";
+        }
+        else if (DropdownSize.value == 3)
+        {
+            Screen.SetResolution(1920, 1080, isFullScreen);
+            newResolution = "1920x1080";
+        }
+
+        // После смены разрешения обновляем JSON
+        UpdateGameSettingsResolution(newResolution);
+    }
+    private void UpdateGameSettingsResolution(string newResolution)
+    {
+        if (!File.Exists(configFilePath))
+        {
+            Debug.LogError("Файл GameConfig.json не найден по пути: " + configFilePath);
+            return;
+        }
+
+        // Читаем JSON из файла
+        string json = File.ReadAllText(configFilePath);
+
+        // Парсим строку в JObject
+        JObject jObject = JObject.Parse(json);
+
+        // Ищем раздел "GameSettings" и обновляем значение "screenResolution"
+        if (jObject["settings"] != null)
+        {
+            jObject["settings"]["resolution"] = newResolution;
+        }
+        else
+        {
+            Debug.LogError("Секция 'GameSettings' не найдена в JSON.");
+            return;
+        }
+
+        // Преобразуем обновлённый JObject обратно в строку
+        string newJson = jObject.ToString();
+
+        // Записываем обновлённый JSON в файл
+        File.WriteAllText(configFilePath, newJson);
+        Debug.Log("Обновлено разрешение экрана в JSON: " + newResolution);
+    }
 
     private void OnSaveButtonClicked()
     {
-        Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, fullscreenToggle.isOn);
+     
         AudioListener.volume = musicVolumeSlider.value;
         AudioListener.pause = !soundToggle.isOn;
 
-        settings.resolution = resolutions[resolutionDropdown.value].width + " x " + resolutions[resolutionDropdown.value].height;
         settings.windowMode = fullscreenToggle.isOn ? "fullscreen" : "windowed";
         settings.sound = soundToggle.isOn;
         settings.musicVolume = musicVolumeSlider.value;
@@ -73,13 +120,13 @@ public class AppSettingsManager : MonoBehaviour
 
     private void LoadSettings()
     {
-        string settingsJson = File.ReadAllText(Application.dataPath + "/Resources/settings.json");
+        string settingsJson = File.ReadAllText(Application.dataPath + "/Resources/gameData.json");
         settings = JsonUtility.FromJson<Settings>(settingsJson);
     }
 
     private void SaveSettings()
     {
         string settingsJson = JsonUtility.ToJson(settings, true);
-        File.WriteAllText(Application.dataPath + "/Resources/settings.json", settingsJson);
+        File.WriteAllText(Application.dataPath + "/Resources/gameData.json", settingsJson);
     }
 }
